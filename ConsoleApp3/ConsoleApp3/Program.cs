@@ -7,43 +7,39 @@ namespace ConsoleApp3
         static void Main(string[] args)
         {
             Console.Clear();
-            Console.WriteLine("Podaj pierwsza cyfre");
-            string firstNumberString = Console.ReadLine();
-            int firstNumber;
-            bool conversionResult = int.TryParse(firstNumberString, out firstNumber);
+            //Console.WriteLine("Podaj pierwsza cyfre");
+            int firstNumber = GetValidIntigerFromConsole();
 
-            while (conversionResult == false)
-            {
-                Console.WriteLine("Nie podałeś liczby! Spróbuj jeszcze raz!");
-                Console.ReadKey();
-
-                Console.Clear();
-                Console.WriteLine("Podaj pierwsza cyfre");
-                firstNumberString = Console.ReadLine();
-                conversionResult = int.TryParse(firstNumberString, out firstNumber);
-            }
-
-            Console.WriteLine("Podaj drugą cyfre");
-            string secondNumberString = Console.ReadLine();
-            int secondNumber;
-            conversionResult = int.TryParse(secondNumberString, out secondNumber);
-
-            while (conversionResult == false)
-            {
-                Console.WriteLine("Nie podałeś liczby! Spróbuj jeszcze raz!");
-                Console.ReadKey();
-
-                Console.Clear();
-                Console.WriteLine("Podaj drugą cyfre");
-                secondNumberString = Console.ReadLine();
-                conversionResult = int.TryParse(secondNumberString, out secondNumber);
-            }
-
+            //Console.WriteLine("Podaj drugą cyfre");
+            int secondNumber = GetValidIntigerFromConsole();
+    
             int result = firstNumber + secondNumber;
 
             Console.WriteLine($"Wynik = {result}"); // Interpolacja $ i zmienne w {}
 
             Console.ReadKey();
+        }
+
+        private static int GetValidIntigerFromConsole()
+        {
+            string messageToUser = "Podaj cyfre";
+            Console.WriteLine(messageToUser);
+            string numberString = Console.ReadLine();
+            int number;
+            bool conversionResult = int.TryParse(numberString, out number);
+
+            while (conversionResult == false)
+            {
+                Console.WriteLine("Nie podałeś liczby! Spróbuj jeszcze raz!");
+                Console.ReadKey();
+
+                Console.Clear();
+                Console.WriteLine(messageToUser);
+                numberString = Console.ReadLine() + numberString;
+                conversionResult = int.TryParse(numberString, out number);
+            }
+
+            return number;
         }
     }
 }
