@@ -6,19 +6,18 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
-            int wynik = 0; 
+            int wynik = 0;
+            bool pobieramyNastepnaLiczbe = true;
 
-            while (true) // <----- tutaj masz błą. Mu sisz tutaj uzyc ziennej bool
-            {
+            while (pobieramyNastepnaLiczbe) // <----- tutaj masz błą. Mu sisz tutaj uzyc ziennej bool
+            { 
                 int aktulanaLiczba = GetValidIntigerFromConsole();
                 wynik = wynik + aktulanaLiczba;
 
+                pobieramyNastepnaLiczbe = (aktulanaLiczba != 123);
             }
-                
-
 
             Console.WriteLine($"Wynik = {wynik}"); // Interpolacja $ i zmienne w {}
-
             Console.ReadKey();
         }
 
