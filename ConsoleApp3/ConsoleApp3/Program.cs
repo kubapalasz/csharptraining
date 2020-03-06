@@ -6,16 +6,18 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
-            Console.Clear();
-            //Console.WriteLine("Podaj pierwsza cyfre");
-            int firstNumber = GetValidIntigerFromConsole();
+            int wynik = 0;
 
-            //Console.WriteLine("Podaj drugą cyfre");
-            int secondNumber = GetValidIntigerFromConsole();
-    
-            int result = firstNumber + secondNumber;
+            while (true) 
+            {
+                int aktulanaLiczba = GetValidIntigerFromConsole();
+                wynik = wynik + aktulanaLiczba;
 
-            Console.WriteLine($"Wynik = {result}"); // Interpolacja $ i zmienne w {}
+            }
+                
+
+
+            Console.WriteLine($"Wynik = {wynik}"); // Interpolacja $ i zmienne w {}
 
             Console.ReadKey();
         }
