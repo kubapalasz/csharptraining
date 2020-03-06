@@ -8,7 +8,7 @@ namespace ConsoleApp3
         {
             int wynik = 0; 
 
-            while (true) 
+            while (true) // <----- tutaj masz błą. Mu sisz tutaj uzyc ziennej bool
             {
                 int aktulanaLiczba = GetValidIntigerFromConsole();
                 wynik = wynik + aktulanaLiczba;
