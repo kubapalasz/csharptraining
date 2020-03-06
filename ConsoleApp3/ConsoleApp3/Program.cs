@@ -6,7 +6,7 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
-            int wynik = 0;
+            int wynik = 0; 
 
             while (true) 
             {
