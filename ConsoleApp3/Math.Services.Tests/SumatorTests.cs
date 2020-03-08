@@ -14,6 +14,7 @@ namespace Math.Services.Tests
         [InlineData("1 , 2 , 3 ", 6)]
         [InlineData("1 , -2 , 3 ", 2)]
         [InlineData("1 ,  , 3 ", 4)]
+        [InlineData("1,2,3,4", 10)] 
         public void FromCsv_VariousInput_Valid(string input, int expected)
         {
             // Act
