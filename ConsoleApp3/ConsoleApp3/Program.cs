@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Math.Services;
+using System;
 
 namespace ConsoleApp3
 {
@@ -6,17 +7,7 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
-            int wynik = 0;
-            bool pobieramyNastepnaLiczbe = true;
-
-            while (pobieramyNastepnaLiczbe) // <----- tutaj masz błą. Mu sisz tutaj uzyc ziennej bool
-            { 
-                int aktulanaLiczba = GetValidIntigerFromConsole();
-                wynik = wynik + aktulanaLiczba;
-
-                pobieramyNastepnaLiczbe = (aktulanaLiczba != 123);
-            }
-
+            var wynik = LargestNumber.MaxFromArray(args);
             Console.WriteLine($"Wynik = {wynik}"); // Interpolacja $ i zmienne w {}
             Console.ReadKey();
         }
