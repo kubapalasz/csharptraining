@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Math.Services
@@ -23,15 +24,28 @@ namespace Math.Services
             }
             return result;
         }
+
         public static string MaxFromArray(string[] array)
         {
-            string result;
             if (array == null || array.Length == 0)
             {
-                return result = "";
+                return string.Empty;
             }
-            int[] numbersArray = Array.ConvertAll(array, int.Parse);
-           return result = MaxFromArray(numbersArray).ToString();            
+
+            // Poniższy kod nie przewiduje, że `array` może mieć elementy tablicy, które nie są poprawnymi liczbami typu int.
+            // Trzeba tak kod zmienić by metoda konwertująca zareagowała gdy natrafi na niepoprawną liczbę... Np.: ominęła ten element
+            //int[] numbersArray = Array.ConvertAll(array, int.Parse);
+
+            var validIntegers = new List<int>();
+            foreach (var intigerCandidate in array)
+            {
+                if (int.TryParse(intigerCandidate, out var validInteger))
+                {
+                    validIntegers.Add(validInteger);
+                }
+            }
+
+            return MaxFromArray(validIntegers.ToArray()).ToString();
         }
     }
 }
