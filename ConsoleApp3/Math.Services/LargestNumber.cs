@@ -14,6 +14,9 @@ namespace Math.Services
             {
                 return result;
             }
+            
+            //result = array.Min();
+
             result = array[0];
             foreach (int currentValue in array)
             {                
@@ -34,7 +37,7 @@ namespace Math.Services
 
             // Poniższy kod nie przewiduje, że `array` może mieć elementy tablicy, które nie są poprawnymi liczbami typu int.
             // Trzeba tak kod zmienić by metoda konwertująca zareagowała gdy natrafi na niepoprawną liczbę... Np.: ominęła ten element
-            //int[] numbersArray = Array.ConvertAll(array, int.Parse);
+            int[] numbersArray = Array.ConvertAll(array, Converter);
 
             var validIntegers = new List<int>();
             foreach (var intigerCandidate in array)
@@ -46,6 +49,26 @@ namespace Math.Services
             }
 
             return MaxFromArray(validIntegers.ToArray()).ToString();
+        }
+
+
+        // int.Parse() <<<<<<
+        private static int Converter(string input)
+        {
+            try
+            {
+                return int.Parse(input);
+            }
+            catch (Exception exception)
+            {
+                // log error
+            }
+            finally
+            {
+                // close db/http connection 
+            }
+
+            return int.MinValue;
         }
     }
 }
