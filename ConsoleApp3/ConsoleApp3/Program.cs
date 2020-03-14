@@ -1,4 +1,5 @@
 ﻿using System;
+using ConsoleTools;
 
 namespace ConsoleApp3
 {
@@ -6,41 +7,22 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
-            int wynik = 0;
-            bool pobieramyNastepnaLiczbe = true;
-
-            while (pobieramyNastepnaLiczbe) // <----- tutaj masz błą. Mu sisz tutaj uzyc ziennej bool
-            { 
-                int aktulanaLiczba = GetValidIntigerFromConsole();
-                wynik = wynik + aktulanaLiczba;
-
-                pobieramyNastepnaLiczbe = (aktulanaLiczba != 123);
-            }
-
-            Console.WriteLine($"Wynik = {wynik}"); // Interpolacja $ i zmienne w {}
-            Console.ReadKey();
-        }
-
-        private static int GetValidIntigerFromConsole()
-        {
-            string messageToUser = "Podaj cyfre";
-            Console.WriteLine(messageToUser);
-            string numberString = Console.ReadLine();
-            int number;
-            bool conversionResult = int.TryParse(numberString, out number);
-
-            while (conversionResult == false)
+            if (args == null || args.Length == 0)
             {
-                Console.WriteLine("Nie podałeś liczby! Spróbuj jeszcze raz!");
-                Console.ReadKey();
-
-                Console.Clear();
-                Console.WriteLine(messageToUser);
-                numberString = Console.ReadLine() + numberString;
-                conversionResult = int.TryParse(numberString, out number);
+                Console.WriteLine("Podaj parametry wywołania:");
+                Console.WriteLine("1/ Kod zadania");
+                Console.WriteLine("2/ Parametry zadania");
+                return;
             }
 
-            return number;
+            switch (args[0])
+            {
+                case HelloWorld.Code:
+                    HelloWorld.Run(args);
+                    break;
+            }
+
+            Console.ReadKey();
         }
     }
 }
