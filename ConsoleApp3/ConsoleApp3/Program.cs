@@ -1,5 +1,4 @@
-﻿using Math.Services;
-using System;
+﻿using System;
 using ConsoleTools;
 
 namespace ConsoleApp3
@@ -20,6 +19,10 @@ namespace ConsoleApp3
             {
                 case HelloWorld.Code:
                     HelloWorld.Run(args);
+                    break;
+
+                case "04-R":
+                    // Dodaj tutaj swój kod ;-)
                     break;
             }
 
