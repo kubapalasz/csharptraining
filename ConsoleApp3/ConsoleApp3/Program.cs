@@ -1,5 +1,8 @@
 ﻿using System;
 using ConsoleTools;
+using Math.Services;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace ConsoleApp3
 {
@@ -20,9 +23,38 @@ namespace ConsoleApp3
                 case HelloWorld.Code:
                     HelloWorld.Run(args);
                     break;
+
+                case "04-R":
+                    // Dodaj tutaj swój kod ;-)
+                    Console.WriteLine("Jestem prostą aplikacją wskazującą największą liczbę :-)");
+                    if (args.Length == 1)   // jeśli użytkownik nie przekaże parametrów w trakcie wywołania aplikacji to zostanie o nie poproszony
+                    {
+                        Console.WriteLine("Podaj liczbę lub wciśnij 'W':");
+                        ConsoleKeyInfo currentKey = Console.ReadKey();                          
+                        List<string> userArguments = new List<string>();         
+                        while (currentKey.Key != ConsoleKey.W)
+                        {
+                            userArguments.Add(Convert.ToString(currentKey.KeyChar) + Console.ReadLine());
+                            Console.WriteLine("Podaj kolejną liczbę lub wciśnij 'W':");
+                            currentKey = Console.ReadKey();                            
+                        }
+                        var wynik = LargestNumber.MaxFromArray(userArguments.ToArray());
+                        Console.WriteLine();
+                        Console.WriteLine($"Maksymalna liczba = {wynik}");
+                        Console.ReadKey();
+                        break;
+                    } else
+                    {
+                        var wynik = LargestNumber.MaxFromArray(args);                        
+                        Console.WriteLine($"Maksymalna liczba = {wynik}"); // Interpolacja $ i zmienne w {}
+                        Console.ReadKey();
+                        break;
+                    }
+                    
             }
 
             Console.ReadKey();
-        }
+
+        }       
     }
 }

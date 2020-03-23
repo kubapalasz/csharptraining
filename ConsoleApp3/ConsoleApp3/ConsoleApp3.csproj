@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Math.Services\Math.Services.csproj" />
     <ProjectReference Include="..\ConsoleTools\ConsoleTools.csproj" />
   </ItemGroup>
 
