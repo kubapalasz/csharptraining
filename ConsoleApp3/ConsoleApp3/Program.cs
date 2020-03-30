@@ -57,21 +57,26 @@ namespace ConsoleApp3
                     // Dodaj tutaj swój kod ;-)
                     Console.WriteLine("Jestem prostą aplikacją eliminującą liczby nieparzyste :-)");
 
-                    var numberCandidates = args;
+                    var numberCandidates = args.ToList(); // od tego momentu lista.
 
-                    if (numberCandidates.Length == 1)   // jeśli użytkownik nie przekaże parametrów w trakcie wywołania aplikacji to zostanie o nie poproszony
+                    if (numberCandidates.Count == 1)   // jeśli użytkownik nie przekaże parametrów w trakcie wywołania aplikacji to zostanie o nie poproszony
                     {
                         Console.WriteLine("Podaj liczbę lub wciśnij 'W':");
-                        ConsoleKeyInfo currentKey = Console.ReadKey();
-                        List<string> userArguments = new List<string>();
-                        while (currentKey.Key != ConsoleKey.W)
+                        ConsoleKeyInfo currentKey;
+                        while(true)
                         {
-                            userArguments.Add(Convert.ToString(currentKey.KeyChar) + Console.ReadLine());
+                            currentKey = Console.ReadKey();
+                            if (currentKey.Key == ConsoleKey.W)
+                            {
+                                break;
+                            }
+
+                            numberCandidates.Add(currentKey.KeyChar.ToString());
                             Console.WriteLine("Podaj kolejną liczbę lub wciśnij 'W':");
                             currentKey = Console.ReadKey();
                         }
+                        while (currentKey.Key != ConsoleKey.W);
 
-                        numberCandidates = userArguments.ToArray();
                     }
 
                     wynik = ElimanteOddNumbers.RemoveOddNumbers(numberCandidates);
