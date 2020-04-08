@@ -52,18 +52,15 @@ namespace ConsoleApp3
 
                         break;
                     }
-
-
+                    
                 case "08-R":
                     // Dodaj tutaj swój kod ;-)
                     Console.WriteLine("Jestem prostą aplikacją eliminującą liczby nieparzyste :-)");
-
                     var numberCandidates = args.ToList(); // od tego momentu lista.
-
                     if (numberCandidates.Count == 1)   // jeśli użytkownik nie przekaże parametrów w trakcie wywołania aplikacji to zostanie o nie poproszony
-                    {                        
+                    {
                         string currentValue = string.Empty;
-                        while(true)
+                        while (true)
                         {
                             Console.WriteLine("Podaj liczbę lub wybierz W - wynik:");
                             currentValue = Console.ReadLine().ToUpper();
@@ -71,16 +68,28 @@ namespace ConsoleApp3
                             {
                                 break;
                             }
-                            numberCandidates.Add(currentValue);                           
+                            numberCandidates.Add(currentValue);
                         }
-                        while (currentValue != "W");
-
+                        while (currentValue != "W") ;                        
                     }
-
                     wynik = ElimanteOddNumbers.RemoveOddNumbers(numberCandidates);
                     Console.WriteLine($"Podane liczby bez nieprzystych = {wynik}");
                     break;
-            }
+
+                case "16-R":
+                    Console.WriteLine("Narysuję prostokąt");
+                    Console.WriteLine("podaj wysokość:");
+                    var height = Console.ReadLine();
+                    Console.WriteLine("podaj szerokość:");
+                    var width = Console.ReadLine();
+                    Console.WriteLine("podaj symbol do rysowania:");
+                    var character = Console.ReadLine();
+
+                    Drawing.DrawRectangle(int.Parse(height), int.Parse(width), character);
+                    break;                    
+            }                          
+
+            
 
             Console.ReadKey();
         }       
