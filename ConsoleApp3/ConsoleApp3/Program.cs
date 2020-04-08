@@ -18,6 +18,7 @@ namespace ConsoleApp3
                 return;
             }
 
+            var wynik = string.Empty;
             switch (args[0])
             {
                 case HelloWorld.Code:
@@ -38,23 +39,50 @@ namespace ConsoleApp3
                             Console.WriteLine("Podaj kolejną liczbę lub wciśnij 'W':");
                             currentKey = Console.ReadKey();                            
                         }
-                        var wynik = LargestNumber.MaxFromArray(userArguments.ToArray());
+                        wynik = LargestNumber.MaxFromArray(userArguments.ToArray());
                         Console.WriteLine();
                         Console.WriteLine($"Maksymalna liczba = {wynik}");
                         Console.ReadKey();
                         break;
                     } else
                     {
-                        var wynik = LargestNumber.MaxFromArray(args);                        
+                        wynik = LargestNumber.MaxFromArray(args);                        
                         Console.WriteLine($"Maksymalna liczba = {wynik}"); // Interpolacja $ i zmienne w {}
                         Console.ReadKey();
+
                         break;
                     }
-                    
+
+
+                case "08-R":
+                    // Dodaj tutaj swój kod ;-)
+                    Console.WriteLine("Jestem prostą aplikacją eliminującą liczby nieparzyste :-)");
+
+                    var numberCandidates = args.ToList(); // od tego momentu lista.
+
+                    if (numberCandidates.Count == 1)   // jeśli użytkownik nie przekaże parametrów w trakcie wywołania aplikacji to zostanie o nie poproszony
+                    {                        
+                        string currentValue = string.Empty;
+                        while(true)
+                        {
+                            Console.WriteLine("Podaj liczbę lub wybierz W - wynik:");
+                            currentValue = Console.ReadLine().ToUpper();
+                            if (currentValue == "W")
+                            {
+                                break;
+                            }
+                            numberCandidates.Add(currentValue);                           
+                        }
+                        while (currentValue != "W");
+
+                    }
+
+                    wynik = ElimanteOddNumbers.RemoveOddNumbers(numberCandidates);
+                    Console.WriteLine($"Podane liczby bez nieprzystych = {wynik}");
+                    break;
             }
 
             Console.ReadKey();
-
         }       
     }
 }
