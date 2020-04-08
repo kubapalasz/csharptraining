@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Xunit;
 using System.Linq;
 
@@ -27,7 +28,7 @@ namespace Math.Services.Tests
         public void MaxFromAray_VariousInput_Valid(string[] input, string expected)
         {
             // Act
-            var actual = ElimanteOddNumbers.RemoveOddNumbers(input.ToList());
+            var actual = ElimanteOddNumbers.RemoveOddNumbers(input?.ToList());
 
             // Assert
             Assert.Equal(expected, actual);
