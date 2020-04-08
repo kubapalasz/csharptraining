@@ -49,6 +49,7 @@ namespace ConsoleApp3
                         wynik = LargestNumber.MaxFromArray(args);                        
                         Console.WriteLine($"Maksymalna liczba = {wynik}"); // Interpolacja $ i zmienne w {}
                         Console.ReadKey();
+
                         break;
                     }
 
@@ -60,22 +61,19 @@ namespace ConsoleApp3
                     var numberCandidates = args.ToList(); // od tego momentu lista.
 
                     if (numberCandidates.Count == 1)   // jeśli użytkownik nie przekaże parametrów w trakcie wywołania aplikacji to zostanie o nie poproszony
-                    {
-                        Console.WriteLine("Podaj liczbę lub wciśnij 'W':");
-                        ConsoleKeyInfo currentKey;
+                    {                        
+                        string currentValue = string.Empty;
                         while(true)
                         {
-                            currentKey = Console.ReadKey();
-                            if (currentKey.Key == ConsoleKey.W)
+                            Console.WriteLine("Podaj liczbę lub wybierz W - wynik:");
+                            currentValue = Console.ReadLine().ToUpper();
+                            if (currentValue == "W")
                             {
                                 break;
                             }
-
-                            numberCandidates.Add(currentKey.KeyChar.ToString());
-                            Console.WriteLine("Podaj kolejną liczbę lub wciśnij 'W':");
-                            currentKey = Console.ReadKey();
+                            numberCandidates.Add(currentValue);                           
                         }
-                        while (currentKey.Key != ConsoleKey.W);
+                        while (currentValue != "W");
 
                     }
 
