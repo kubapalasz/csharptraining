@@ -79,13 +79,13 @@ namespace ConsoleApp3
                 case "16-R":
                     Console.WriteLine("Narysuję prostokąt");
                     Console.WriteLine("podaj wysokość:");
-                    var height = Console.ReadLine();
+                    var height = int.Parse(Console.ReadLine());
                     Console.WriteLine("podaj szerokość:");
-                    var width = Console.ReadLine();
+                    var width = int.Parse(Console.ReadLine());
                     Console.WriteLine("podaj symbol do rysowania:");
                     var character = Console.ReadLine();
-
-                    Drawing.DrawRectangle(int.Parse(height), int.Parse(width), character);
+                    Console.Clear();
+                    Drawing.DrawRectangle(1, 1, height, width, character);
                     break;                    
             }                          
 
