@@ -85,7 +85,45 @@ namespace ConsoleApp3
                     Console.WriteLine("podaj symbol do rysowania:");
                     var character = Console.ReadLine();
                     Console.Clear();
-                    Drawing.DrawRectangle(1, 1, height, width, character);
+                    var startPositionX = 1;
+                    var startPositionY = 1;
+                    Drawing.DrawRectangle(startPositionX, startPositionY, height, width, character);
+                    ConsoleKeyInfo currentKey1;
+                    do
+                    {
+                        currentKey1 = Console.ReadKey();
+                        if (currentKey1.Key == ConsoleKey.LeftArrow)
+                        {
+                            if (startPositionX > 0)
+                            {
+                                startPositionX -= 1;
+                            }
+                        }
+                        if (currentKey1.Key == ConsoleKey.UpArrow)
+                        {
+                            if (startPositionY > 0)
+                            {
+                                startPositionY -= 1;
+                            }
+                        }
+                        if (currentKey1.Key == ConsoleKey.RightArrow)
+                        {
+                            if (startPositionX + width + 1 < Console.BufferWidth)
+                            {
+                                startPositionX += 1;
+                            }
+                        }
+                        if (currentKey1.Key == ConsoleKey.DownArrow)
+                        {
+                            if (startPositionY + height + 1 < Console.BufferHeight)
+                            {
+                                startPositionY += 1;
+                            }
+                        }
+                        Console.Clear();
+                        Drawing.DrawRectangle(startPositionX, startPositionY, height, width, character);
+                    } 
+                    while (currentKey1.Key != ConsoleKey.Escape);
                     break;                    
             }                          
 
