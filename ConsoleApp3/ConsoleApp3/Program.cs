@@ -82,15 +82,14 @@ namespace ConsoleApp3
 
                     Console.WriteLine("Narysuję prostokąt");
                     Console.WriteLine("podaj wysokość:");
-                    rectangle.Heigth = int.Parse(Console.ReadLine());
+                    rectangle.Height = int.Parse(Console.ReadLine());
                     Console.WriteLine("podaj szerokość:");
                     rectangle.Width = int.Parse(Console.ReadLine());
                     Console.WriteLine("podaj symbol do rysowania:");
                     rectangle.Character = Console.ReadLine();
-                    Console.Clear();
 
-
-                    rectangle.Draw();
+                    Console.CursorVisible = false;
+                    rectangle.Draw();                    
                     ConsoleKeyInfo currentKey1;
                     do
                     {
